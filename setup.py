@@ -7,7 +7,8 @@
 from os import path
 import json
 import setuptools
-from altf1be_helpers.altf1be_helpers import AltF1BeHelpers
+from altf1be_json_helpers.altf1be_json_helpers import AltF1BeJSONHelpers
+from altf1be_helpers import AltF1BeHelpers
 
 with open('README.md', 'r') as fh:
     long_description = fh.read()
@@ -77,9 +78,9 @@ setuptools.setup(
     # maintainers, and where to support the project financially. The key is
     # what's used to render the link text on PyPI.
     project_urls={  # Optional
-        'Bug Reports': 'https://github.com/ALT-F1/altf1be_helpers/issues/new',
+        'Bug Reports': 'https://github.com/ALT-F1/altf1be_json_helpers/issues/new',
         'Company behind the library': 'http://www.alt-f1.be',
-        'Source': 'https://github.com/ALT-F1/altf1be_helpers',
+        'Source': 'https://github.com/ALT-F1/altf1be_json_helpers',
     },
 
 )

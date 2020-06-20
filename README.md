@@ -1,24 +1,23 @@
-# altf1be_helpers
+# altf1be_json_helpers
 
-Helpers to deal with basic requirements of an application built by www.alt-f1.be. See <https://bitbucket.org/altf1be/altf1be_helpers>
+Helpers to deal with basic requirements of the management of a JSON File: Load, save, save with datetime. The library is built by www.alt-f1.be. See <https://bitbucket.org/altf1be/altf1be_json_helpers>
 
-The class ALTF1
+The class [AltF1beJSON](altf1be_json_helpers/altf1be_json_helpers.py) counts a limited amount of methods
 
-
-* Get the list of countries stored in the field "place" in transactions stored in twikey.
-* The places are written either in FR, EN or NL.
-* The method returns a List of places in English and a Set of those places if the places are using the above-mentioned languages
+* Load a JSON file
+* Save a JSON file and create the directory where to store the JSON file if it does not exists
+* Save a JSON file appended with a date time; e.g. 2020-06-19_20-45-42 (format YYYY-MM-DD_HH-MM-SS)
 
 ## usage
 
 * install the package on **pypi.org** : 
-    * install : `pip install altf1be_helpers`
-    * upgrade : `pip install altf1be_helpers --upgrade`
+    * install : `pip install altf1be_json_helpers`
+    * upgrade : `pip install altf1be_json_helpers --upgrade`
 
 
 * install the package on **test.pypi.org** : 
-    * install : `pip install -i https://test.pypi.org/simple/altf1be_helpers`
-    * upgrade : `pip install -i https://test.pypi.org/simple/altf1be_helpers --upgrade`
+    * install : `pip install -i https://test.pypi.org/simple/altf1be_json_helpers`
+    * upgrade : `pip install -i https://test.pypi.org/simple/altf1be_json_helpers --upgrade`
 
 ## dependencies
 
@@ -26,32 +25,34 @@ The class ALTF1
 
 ## Build the package 
 
+* install NodeJS packages `npm install`
+
 * build the setup.py
-    * `python3 setup.py sdist bdist_wheel`
-    * `python3 -m pip install --user --upgrade twine`
+    * Clean and build the package : `npm run clean-build`
 
 * upload the library on TEST **pypi.org** 
-    * `python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*` 
-    * Source : [https://test.pypi.org/project/altf1be_helpers](https://test.pypi.org/project/altf1be_helpers)
+    * `npm run push-test:setup.py`
+    * Source : [https://test.pypi.org/project/altf1be_json_helpers](https://test.pypi.org/project/altf1be_json_helpers)
 
 * upload the library on PROD **pypi.org** 
-    * `python -m twine upload dist/*` 
-    * Source : [https://pypi.org/project/altf1be_helpers](https://pypi.org/project/altf1be_helpers)
+    * `npm run push-prod:setup.py` 
+    * Source : [https://pypi.org/project/altf1be_json_helpers](https://pypi.org/project/altf1be_json_helpers)
 
 
 ## test the library
 
-* `cd altf1be_helpers`
-* `python altf1be_helpers_unittest.py`
+* `cd altf1be_json_helpers`
+* `python altf1be_json_helpers_unittest.py`
 
 * locate the package 
-    * `python -c "from altf1be_helpers import AltF1BeHelpers as _; print(_.__path__)"` **does not work yet**
+    * `python -c "from altf1be_json_helpers import AltF1BeJSONHelpers as _; print(_.__path__)"` **does not work yet**
+
 * list functions inside the module
-    *  the package `python -c "import altf1be_helpers as _; print(dir(_))"`
+    *  the package `python -c "import altf1be_json_helpers as _; print(dir(_))"`
 
 * test the package 
-    * `python -c "from altf1be_helpers import AltF1BeHelpers; text='éê à iïî'; print(f'{AltF1BeHelpers.unicode_to_ascii(text)}')"`
-    * result : `ee a iii`
+    * `python -c 'import os;from altf1be_json_helpers import AltF1BeJSONHelpers; altF1BeJSONHelpers = AltF1BeJSONHelpers();data = altF1BeJSONHelpers.load(os.path.join("data", "altf1be_sample.json"));print(data)'`
+    * result : `{"name": "altf1be_json_helpers"}`
 
 ## Documentation
 
