@@ -1,1 +1,1 @@
-altf1be_helpers>=1.0.0,<1.99
+altf1be_helpers==1.0.1
